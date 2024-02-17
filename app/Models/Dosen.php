@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Dosen extends Model
+{
+    use HasFactory;
+    protected $table = 'dosen';
+    protected $primaryKey = 'id_dosen';
+    public $timestamps = false;
+
+
+    public function prodi()
+    {
+        return $this->hasOne(ProgramStudi::class, 'kode_prodi', 'kode_jurusan');
+    }
+}
