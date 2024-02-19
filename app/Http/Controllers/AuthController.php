@@ -17,10 +17,10 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|string|email',
+            'nim' => 'required|string',
             'password' => 'required|string',
         ]);
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('nim', 'password');
 
         $token = Auth::attempt($credentials);
         if (!$token) {
@@ -45,13 +45,13 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'nim' => 'required|string|nim|max:255|unique:users',
             'password' => 'required|string|min:6',
         ]);
 
         $user = User::create([
             'name' => $request->name,
-            'email' => $request->email,
+            'nim' => $request->nim,
             'password' => Hash::make($request->password),
         ]);
 
