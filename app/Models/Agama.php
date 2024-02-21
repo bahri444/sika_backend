@@ -10,4 +10,5 @@ class Agama extends Model
     use HasFactory;
     protected $table = "tbl_agamas";
     protected $primaryKey = "id_agama";
+    protected $fillable = ["nm_agama"];
 }

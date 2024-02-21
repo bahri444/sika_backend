@@ -12,6 +12,13 @@ class ProgramStudi extends Model
 
     protected $table = "program_studi";
     protected $primaryKey = "id_prodi";
+    protected $fillable = [
+        'kode_prodi',
+        'nama_program_studi',
+        'id_jenjang_pendidikan',
+        'jenjang',
+        'status'
+    ];
 
 
     public function kurikulum()

@@ -14,6 +14,14 @@ class DosenPengajar extends Model
     // use Uuids;
 
     protected $primaryKey = 'id';
+    protected $table = 'dosen_pengajars';
+    protected $fillable = [
+        "id_kelaskuliah",
+        "nidn",
+        "rencana_tatap_muka",
+        "tatap_muka_real",
+        "jenis_evaluasi"
+    ];
 
     public function dosen()
     {

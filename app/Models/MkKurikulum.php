@@ -10,6 +10,11 @@ class MkKurikulum extends Model
     use HasFactory;
     protected $table = "tbl_mk_kurikulum";
     protected $primaryKey = "id_mk_kur";
+    protected $fillable = [
+        'id_kurikulum',
+        'kode_prodi',
+        'kode_mk',
+    ];
     public $timestamps = false;
 
     public function matakuliah()

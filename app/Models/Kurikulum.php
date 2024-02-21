@@ -8,12 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kurikulum extends Model
 {
-    use Searchable;
+    // use Searchable;
     use HasUuids;
     use HasFactory;
     protected $table = "tbl_kurkulum";
     protected $primaryKey = "id_kurikulum";
     protected $keyType = "String";
+    protected $fillable = [
+        "nama_kurikulum",
+        "id_prodi",
+        "id_semester",
+        "jumlah_sks_lulus",
+        "jumlah_sks_wajib",
+        "jumlah_sks_pilihan",
+        "status"
+    ];
 
 
     public function toSearchableArray(): array

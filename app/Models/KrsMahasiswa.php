@@ -8,9 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class KrsMahasiswa extends Model
 {
     use HasFactory;
-    use Uuids;
+    // use Uuids;
 
     protected $primaryKey = 'id_krs_mhs';
+    protected $table = 'krs_mhs';
+    protected $fillable = [
+        "semester",
+        "nipd",
+        "kode_prodi",
+        "kode_mk",
+        "id_kelas",
+        "status"
+    ];
 
     public function siswa()
     {

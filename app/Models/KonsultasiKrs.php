@@ -9,4 +9,11 @@ class KonsultasiKrs extends Model
 {
     use HasFactory;
     protected $primaryKey = "id_konsultasi";
+    protected $table = "tbl_konsultasi_krs";
+    protected $fillable = [
+        "id_konsultasi",
+        "pesan_konsultasi",
+        "nipd",
+        "semester"
+    ];
 }

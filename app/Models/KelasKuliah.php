@@ -13,6 +13,22 @@ class KelasKuliah extends Model
     use HasUuids;
 
     protected $primaryKey = "id_kelas";
+    protected $fillable = [
+        "id_kelas",
+        "semester",
+        "kode_mk",
+        "nama_kelas",
+        "ruang",
+        "hari",
+        "jam_mulai",
+        "jam_selesai",
+        "tgl_mulai",
+        "tgl_selesai",
+        "bahasan",
+        "kelas_kampus_merdeka",
+        "kode_prodi",
+        "nidn",
+    ];
 
     /**
      * Get the user associated with the tbl_kelas_kuliah

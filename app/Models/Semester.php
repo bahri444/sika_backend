@@ -11,6 +11,10 @@ class Semester extends Model
 
     protected $table = 'semester';
     protected $primaryKey = 'semester';
+    protected $fillable = [
+        'nama_semester',
+        'semester_aktif'
+    ];
     protected $keyType = 'string';
     public $timestamps = false;
 }

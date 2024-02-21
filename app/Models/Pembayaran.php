@@ -12,9 +12,18 @@ class Pembayaran extends Model
     // use Uuids;
 
     protected $primaryKey = 'id_pembayaran';
+    protected $table = 'tbl_pembayarans';
+    protected $fillable = [
+        'nim',
+        'jumlah_bayar',
+        'tgl_bayar',
+        'no_resi',
+        'semester',
+        'status'
+    ];
 
     public function mahasiswa()
     {
-        return $this->hasOne(tbl_mahasiswa::class, 'nipd', 'nim');
+        return $this->hasOne(Mahasiswa::class, 'nipd', 'nim');
     }
 }
