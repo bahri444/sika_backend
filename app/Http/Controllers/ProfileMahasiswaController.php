@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProfileMahasiswaController extends Controller
@@ -12,7 +13,9 @@ class ProfileMahasiswaController extends Controller
     }
     public function GetProfileMahasiswa()
     {
-        $data_profile = "data profile mahasiswa yang bersangkutan";
+        $data_profile = User::with('mahasiswa')->get();
+        // dd($data_profile);
+        // $data_profile = "data profile mahasiswa yang bersangkutan";
         return response()->json(['data' => $data_profile, 'success' => 'data profile mahasiswa'], 200);
     }
 }

@@ -46,7 +46,7 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function mhs()
+    public function mahasiswa()
     {
         return $this->hasOne(Mahasiswa::class, 'nipd', 'nim');
     }

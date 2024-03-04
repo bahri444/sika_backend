@@ -13,6 +13,7 @@ class KelasKuliah extends Model
     use HasUuids;
 
     protected $primaryKey = "id_kelas";
+    protected $table = "tbl_kelas_kuliahs";
     protected $fillable = [
         "id_kelas",
         "semester",

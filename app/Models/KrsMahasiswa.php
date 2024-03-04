@@ -21,7 +21,7 @@ class KrsMahasiswa extends Model
         "status"
     ];
 
-    public function siswa()
+    public function mahasiswa()
     {
         return $this->hasOne(Mahasiswa::class, 'nipd', 'nipd');
     }
