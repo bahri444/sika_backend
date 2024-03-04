@@ -13,7 +13,7 @@ class KrsMahasiswaController extends Controller
     }
     public function GetKrsMahasiswa()
     {
-        $data_krs = KrsMahasiswa::with('mahasiswa', 'nilai', 'matakuliah', 'kelas', 'pengajar', 'prodi')->get();
+        $data_krs = KrsMahasiswa::with('mahasiswa', 'nilai', 'matakuliah', 'kelas', 'pengajar.dosen', 'prodi')->get();
         // dd($data_krs);
         return response()->json([
             'data' => $data_krs,
