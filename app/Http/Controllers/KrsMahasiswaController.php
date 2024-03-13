@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\KrsMahasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KrsMahasiswaController extends Controller
 {
@@ -13,9 +14,8 @@ class KrsMahasiswaController extends Controller
     }
     public function GetKrsMahasiswa()
     {
-        $data_krs = KrsMahasiswa::with('mahasiswa', 'nilai', 'matakuliah', 'kelas', 'pengajar.dosen', 'prodi')->get();
+        $data_krs = KrsMahasiswa::with('mahasiswa', 'nilai', 'matakuliah', 'kelas', 'pengajar.dosen', 'prodi')->where('nipd', Auth::user()->nim)->get();
         $data = [];
-
         foreach ($data_krs as $key) {
             array_push($data, [
                 'nipd' => $key->mahasiswa->nipd,
