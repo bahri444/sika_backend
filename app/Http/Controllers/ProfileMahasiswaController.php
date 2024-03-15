@@ -26,19 +26,21 @@ class ProfileMahasiswaController extends Controller
             if (@fopen($file_profile, '404')) {
                 array_push($data, [
                     'nim' => $val->nim,
-                    'nama_lengkap' => $val->nama_lengkap,
+                    'nama_lengkap' => $val->mahasiswa->nm_pd,
                     'foto' => $file_profile,
-                    'alamat' => [$val->rt, $val->rw, $val->nm_dsn, $val->ds_kel]
+                    'alamat' => $val->mahasiswa->nm_dsn
                 ]);
             } else {
                 array_push($data, [
                     'nim' => $val->nim,
-                    'nama_lengkap' => $val->nama_lengkap,
+                    'nama_lengkap' => $val->mahasiswa->nm_pd,
                     'foto' => $foto_url . $val->foto,
-                    'alamat' => [$val->rt, $val->rw, $val->nm_dsn, $val->ds_kel]
+                    'alamat' => $val->mahasiswa->nm_dsn
                 ]);
             }
         }
         return response()->json(['data' => $data, 'success' => 'data profile mahasiswa'], 200);
     }
 }
+
+// 'alamat' => [$val->rt, $val->rw, $val->nm_dsn, $val->ds_kel]
