@@ -27,4 +27,8 @@ class NilaiMahasiswa extends Model
         'nilai_angka'
     ];
     protected $guarded = [];
+    public function kelas_kuliah()
+    {
+        return $this->hasOne(KelasKuliah::class, 'id_kelas', 'id_kelas');
+    }
 }

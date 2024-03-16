@@ -57,7 +57,7 @@ class KelasKuliah extends Model
         return $this->hasOne(Dosen::class, 'nidn', 'nidn');
     }
 
-    public function mk_kuri()
+    public function mk_kurikulum()
     {
         return $this->hasOne(MkKurikulum::class, 'kode_mk', 'kode_mk');
     }
