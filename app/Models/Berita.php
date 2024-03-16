@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Berita extends Model
 {
     use HasFactory;
+    protected $table = 'berita';
+    protected $primary_key = 'berita_id';
+    protected $fillable = ['title',    'thumbnail'];
 }
