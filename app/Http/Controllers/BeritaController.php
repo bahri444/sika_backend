@@ -15,7 +15,8 @@ class BeritaController extends Controller
     {
         $data_news = Berita::orderBy('berita_id', 'DESC')->limit(2)->get();
         return response()->json([
-            'data' => $data_news
+            'data' => $data_news,
+            'success' => 'data profile mahasiswa'
         ], 200);
     }
 }
