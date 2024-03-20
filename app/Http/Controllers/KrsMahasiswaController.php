@@ -12,17 +12,20 @@ class KrsMahasiswaController extends Controller
     {
         $this->middleware('auth:api');
     }
-    public function GetKrsMahasiswa()
+    public function GetKrsMahasiswa($semester)
     {
-        $data_krs = KrsMahasiswa::with('mahasiswa', 'nilai', 'matakuliah', 'kelas', 'pengajar.dosen', 'prodi')->where('nipd', Auth::user()->nim)->get();
+        $data_krs = KrsMahasiswa::with('mahasiswa', 'nilai', 'matakuliah', 'kelas', 'pengajar.dosen', 'prodi')
+            ->where('semester', $semester)
+            ->where('nipd', Auth::user()->nim)->get();
         $data = [];
-        foreach ($data_krs as $key) {
+        foreach ($data_krs as $val) {
             array_push($data, [
-                'nipd' => $key->mahasiswa->nipd,
-                'nama_mahasiswa' => $key->mahasiswa->nm_pd,
-                'nama_mk' => $key->matakuliah->nama_mk,
-                'jumlah_sks' => $key->matakuliah->sks_tatap_muka,
-                'nama_dosen' => $key->pengajar->dosen->nama_dosen,
+                'semester' => $val->semester,
+                'nipd' => $val->mahasiswa->nipd,
+                'nama_mahasiswa' => $val->mahasiswa->nm_pd,
+                'nama_mk' => $val->matakuliah->nama_mk,
+                'jumlah_sks' => $val->matakuliah->sks_tatap_muka,
+                'nama_dosen' => $val->pengajar->dosen->nama_dosen,
             ]);
         }
         return response()->json([

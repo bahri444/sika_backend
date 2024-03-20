@@ -5,8 +5,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KrsMahasiswaController;
+use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\NilaiMahasiswaController;
 use App\Http\Controllers\ProfileMahasiswaController;
+use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\TranskripNilaiController;
 use App\Models\PengajuanSurat;
 use Illuminate\Support\Facades\Route;
@@ -38,12 +40,11 @@ Route::controller(AuthController::class)->group(function () {
 // });
 
 Route::get('/berita', [BeritaController::class, 'GetNews']);
-
-Route::controller(NilaiMahasiswaController::class)->group(function () {
-    Route::get('nilaimahasiswa', 'GetNilaiMahasiswa');
-});
+Route::get('/nilaimahasiswa/{semester}', [NilaiMahasiswaController::class, 'GetNilaiMahasiswa']); // get transkrip nilai mahasiswa
 Route::get('/transkrip', [TranskripNilaiController::class, 'GetTranskripNilai']); // get transkrip nilai mahasiswa
 Route::get('/profile', [ProfileMahasiswaController::class, 'GetProfileMahasiswa']); // reoute profile mahasiswa
 Route::post('/pengajuansurat', [PengajuanSurat::class, 'PengajuanSurat']); // route pengajuan surat
-Route::get('/krsmahasiswa', [KrsMahasiswaController::class, 'GetKrsMahasiswa']); // reoute krs mahasiswa
+Route::get('/krsmahasiswa/{semester}', [KrsMahasiswaController::class, 'GetKrsMahasiswa']); // reoute krs mahasiswa
 Route::get('/aktifitas', [AktifitasMahasiswaController::class, 'GetAktifitasMahasiswa']); // route aktifitas mahasiswa
+Route::get('/datasemster', [SemesterController::class, 'GetDataSemester']); //route data semester
+Route::get('/matakuliah', [MatakuliahController::class, 'GetAllMatakuliah']); //route data matakuliah
