@@ -17,4 +17,9 @@ class Semester extends Model
     ];
     protected $keyType = 'string';
     public $timestamps = false;
+
+    public function data_semester()
+    {
+        return $this->belongsTo(KrsMahasiswa::class, 'semester', 'semester');
+    }
 }

@@ -50,4 +50,9 @@ class KrsMahasiswa extends Model
     {
         return $this->hasOne(ProgramStudi::class, 'kode_prodi', 'kode_prodi');
     }
+
+    public function data_semester()
+    {
+        return $this->belongsTo(Semester::class, 'semester', 'semester');
+    }
 }
