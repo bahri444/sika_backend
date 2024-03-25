@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -88,5 +89,22 @@ class AuthController extends Controller
                 'type' => 'bearer',
             ]
         ]);
+    }
+
+    public function changePassword(Request $request)
+    {
+        Validator::make($request->all(), [
+            'nim' => 'required',
+            'password' => 'required|min:8',
+        ]);
+        try {
+            $data = array(
+                'password' => Hash::make($request->password)
+            );
+            User::where('nim', $request->nim)->update($data);
+            return response()->json(['success' => 'password berhasil di rubah'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['errors' => 'password gagal di rubah' . $e], 500);
+        }
     }
 }

@@ -8,16 +8,16 @@ use Illuminate\Support\Facades\Validator;
 
 class PengajuanSuratController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth:api');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
     public function PengajuanSurat(Request $request)
     {
         Validator::make(
             $request->all(),
             [
-                'mahasiswa_id' => 'required',
+                'nim' => 'required',
                 'jenis_surat' => 'required',
             ]
         );

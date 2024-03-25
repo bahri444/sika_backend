@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KrsMahasiswaController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\NilaiMahasiswaController;
+use App\Http\Controllers\PengajuanSuratController;
 use App\Http\Controllers\ProfileMahasiswaController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\TranskripNilaiController;
@@ -43,8 +44,9 @@ Route::get('/berita', [BeritaController::class, 'GetNews']);
 Route::get('/nilaimahasiswa/{semester}', [NilaiMahasiswaController::class, 'GetNilaiMahasiswa']); // get transkrip nilai mahasiswa
 Route::get('/transkrip', [TranskripNilaiController::class, 'GetTranskripNilai']); // get transkrip nilai mahasiswa
 Route::get('/profile', [ProfileMahasiswaController::class, 'GetProfileMahasiswa']); // reoute profile mahasiswa
-Route::post('/pengajuansurat', [PengajuanSurat::class, 'PengajuanSurat']); // route pengajuan surat
 Route::get('/krsmahasiswa/{semester}', [KrsMahasiswaController::class, 'GetKrsMahasiswa']); // reoute krs mahasiswa
 Route::get('/aktifitas', [AktifitasMahasiswaController::class, 'GetAktifitasMahasiswa']); // route aktifitas mahasiswa
 Route::get('/datasemster', [SemesterController::class, 'GetDataSemester']); //route data semester
 Route::get('/matakuliah', [MatakuliahController::class, 'GetAllMatakuliah']); //route data matakuliah
+Route::post('/pengajuansurat', [PengajuanSuratController::class, 'PengajuanSurat']); // route pengajuan surat
+Route::post('/passwordchange', [AuthController::class, 'changePassword']); //route post rubah password
