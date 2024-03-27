@@ -28,14 +28,22 @@ class ProfileMahasiswaController extends Controller
                     'nim' => $val->nim,
                     'nama_lengkap' => $val->mahasiswa->nm_pd,
                     'foto' => $file_profile,
-                    'alamat' => $val->mahasiswa->nm_dsn
+                    'alamat' => $val->mahasiswa->nm_dsn,
+                    'email' => $val->mahasiswa->email,
+                    'telepon' => $val->mahasiswa->no_hp,
+                    'nama_ibu' => $val->mahasiswa->nm_ibu_kandung,
+                    'nama_ayah' => $val->mahasiswa->nm_ayah
                 ]);
             } else {
                 array_push($data, [
                     'nim' => $val->nim,
                     'nama_lengkap' => $val->mahasiswa->nm_pd,
                     'foto' => $foto_url . $val->foto,
-                    'alamat' => $val->mahasiswa->nm_dsn
+                    'alamat' => $val->mahasiswa->nm_dsn,
+                    'email' => $val->mahasiswa->email,
+                    'telepon' => $val->mahasiswa->no_hp,
+                    'nama_ibu' => $val->mahasiswa->nm_ibu_kandung,
+                    'nama_ayah' => $val->mahasiswa->nm_ayah
                 ]);
             }
         }

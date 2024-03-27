@@ -3,6 +3,7 @@
 use App\Http\Controllers\AktifitasMahasiswaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KrsMahasiswaController;
 use App\Http\Controllers\MatakuliahController;
@@ -40,7 +41,9 @@ Route::controller(AuthController::class)->group(function () {
 // Route::middleware('atuh:api')->group(function () {
 // });
 
-Route::get('/berita', [BeritaController::class, 'GetNews']);
+Route::get('/wellcome', [DashboardController::class, 'Index']); //get user login wellcome
+Route::get('/berita', [DashboardController::class, 'GetNews']); // get all berita
+Route::get('/beritalimit', [DashboardController::class, 'GetNewsLimit']); // get berita limit
 Route::get('/nilaimahasiswa/{semester}', [NilaiMahasiswaController::class, 'GetNilaiMahasiswa']); // get transkrip nilai mahasiswa
 Route::get('/transkrip', [TranskripNilaiController::class, 'GetTranskripNilai']); // get transkrip nilai mahasiswa
 Route::get('/profile', [ProfileMahasiswaController::class, 'GetProfileMahasiswa']); // reoute profile mahasiswa
