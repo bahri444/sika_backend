@@ -102,9 +102,9 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password)
             );
             User::where('nim', $request->nim)->update($data);
-            return response()->json(['success' => 'password berhasil di rubah'], 200);
+            return response()->json(['msg' => 'password berhasil di rubah', 'code' => 200]);
         } catch (\Exception $e) {
-            return response()->json(['errors' => 'password gagal di rubah' . $e], 500);
+            return response()->json(['msg' => 'password gagal di rubah' . $e, 'code' => 500]);
         }
     }
 }

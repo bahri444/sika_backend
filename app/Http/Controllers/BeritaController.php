@@ -13,9 +13,11 @@ class BeritaController extends Controller
     }
     public function GetNews()
     {
-        $data_news = Berita::orderBy('berita_id', 'DESC')->limit(2)->get();
+        $data_berita = Berita::all();
+        $berita_limit = Berita::orderBy('berita_id', 'DESC')->limit(1)->get();
         return response()->json([
-            'data' => $data_news,
+            'data' => $data_berita,
+            'berita_limit' => $berita_limit,
             'success' => 'data profile mahasiswa'
         ], 200);
     }
