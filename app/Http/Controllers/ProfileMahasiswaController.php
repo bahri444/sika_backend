@@ -23,7 +23,8 @@ class ProfileMahasiswaController extends Controller
         foreach ($data_profile as $val) {
             $foto_name = $val->foto;
             $file_profile = $foto_url . $foto_name;
-            if (@fopen($file_profile, '404')) {
+            if (@fopen($file_profile, 'r')) {
+                // di eksekusi jika nama foto yang ada pada database ada pada direktori projek
                 array_push($data, [
                     'nim' => $val->nim,
                     'nama_lengkap' => $val->mahasiswa->nm_pd,
@@ -35,6 +36,7 @@ class ProfileMahasiswaController extends Controller
                     'nama_ayah' => $val->mahasiswa->nm_ayah
                 ]);
             } else {
+                // di eksekusi jika nama foto yang ada pada database tidak ada pada direktori projek
                 array_push($data, [
                     'nim' => $val->nim,
                     'nama_lengkap' => $val->mahasiswa->nm_pd,

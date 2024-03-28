@@ -25,14 +25,54 @@ class DashboardController extends Controller
             ->get();
         $data = [];
         $foto_url = 'https://sika-v2.stmiklombok.ac.id/assets/images/profile/';
+        $nama_foto = Auth::user()->foto;
+
+        $foto_name = "profile-default.png";
+        $foto_user = $foto_url . $nama_foto;
         foreach ($user_login_wellcome as $val) {
-            array_push($data, [
-                'nama_lengkap' => $val->mahasiswa->nm_pd,
-                'nama_semester' => $val->data_semester->nama_semester,
-                'semester_aktif' => $val->data_semester->semester_aktif,
-                'foto' => $foto_url + Auth::user()->foto,
-            ]);
+            if (@fopen($foto_user, 'r')) {
+                // di eksekusi jika nama foto yang ada pada database ada pada direktori projek
+                array_push($data, [
+                    'nama_lengkap' => $val->mahasiswa->nm_pd,
+                    'nama_semester' => $val->data_semester->nama_semester,
+                    'semester_aktif' => $val->data_semester->semester_aktif,
+                    'foto' => $foto_user
+                ]);
+            } else {
+                // di eksekusi jika nama foto yang ada pada database tidak ada pada direktori projek
+                array_push($data, [
+                    'nama_lengkap' => $val->mahasiswa->nm_pd,
+                    'nama_semester' => $val->data_semester->nama_semester,
+                    'semester_aktif' => $val->data_semester->semester_aktif,
+                    'foto' => $foto_url . $foto_name
+                ]);
+            }
+
+
+            // array_push($data, [
+            //     'nim' => $val->nim,
+            //     'nama_lengkap' => $val->mahasiswa->nm_pd,
+            //     'foto' => $file_profile,
+            //     'alamat' => $val->mahasiswa->nm_dsn,
+            //     'email' => $val->mahasiswa->email,
+            //     'telepon' => $val->mahasiswa->no_hp,
+            //     'nama_ibu' => $val->mahasiswa->nm_ibu_kandung,
+            //     'nama_ayah' => $val->mahasiswa->nm_ayah
+            // ]);
+
+            // array_push($data, [
+            //     'nim' => $val->nim,
+            //     'nama_lengkap' => $val->mahasiswa->nm_pd,
+            //     'foto' => $foto_url . $val->foto,
+            //     'alamat' => $val->mahasiswa->nm_dsn,
+            //     'email' => $val->mahasiswa->email,
+            //     'telepon' => $val->mahasiswa->no_hp,
+            //     'nama_ibu' => $val->mahasiswa->nm_ibu_kandung,
+            //     'nama_ayah' => $val->mahasiswa->nm_ayah
+            // ]);
         }
+
+
         return response()->json([
             'data' => $data,
             'success' => 'data krs mahasiswa pada semester aktif'
