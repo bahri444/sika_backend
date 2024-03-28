@@ -24,12 +24,13 @@ class DashboardController extends Controller
             ->limit(1)
             ->get();
         $data = [];
+        $foto_url = 'https://sika-v2.stmiklombok.ac.id/assets/images/profile/';
         foreach ($user_login_wellcome as $val) {
             array_push($data, [
                 'nama_lengkap' => $val->mahasiswa->nm_pd,
                 'nama_semester' => $val->data_semester->nama_semester,
                 'semester_aktif' => $val->data_semester->semester_aktif,
-                'foto' => Auth::user()->foto,
+                'foto' => $foto_url + Auth::user()->foto,
             ]);
         }
         return response()->json([
